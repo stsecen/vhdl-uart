@@ -100,7 +100,6 @@ begin
                                 s_valid <= '1';
                             else 
                                 s_valid <= '0';
-
                             end if;
                         end if;
                     when state_stop =>
@@ -109,7 +108,8 @@ begin
                                 s_bit_cnt <= 0;
                                 state <= state_idle; 
                             else 
-                                s_bit_cnt <= s_bit_cnt+1; 
+                                s_bit_cnt <= s_bit_cnt+1;                                    state <= state_idle; 
+                                state <= state_stop; 
                             end if;
                             o_data <= s_data_buff;
                             o_valid <= s_valid;
