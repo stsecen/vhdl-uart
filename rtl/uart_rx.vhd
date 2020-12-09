@@ -25,7 +25,7 @@ architecture rtl of uart_rx is
     signal s_valid : std_logic := '0';
     signal s_data_buff : std_logic_vector(DATA_WIDTH-1 downto 0) := (others => '0');
     constant TIMER_TICK : integer := CLK_FREQ/BAUD_RATE; 
-    signal s_cnt   : integer range 0 downto TIMER_TICK;
+    signal s_cnt   : integer range 0 to TIMER_TICK := 0;
     signal s_tick  : std_logic := '0';
     signal s_bit_cnt   : integer range 0 to DATA_WIDTH-1 := 0;
     signal s_party_bit : std_logic := 'Z';
@@ -60,7 +60,6 @@ begin
                 state <= state_idle;
                 s_valid <= '0';
                 s_data_buff <= (others => '0');
-                s_cnt <= 0;
                 s_bit_cnt <= 0; 
             else
                 case state is
@@ -119,7 +118,6 @@ begin
                         state <= state_idle;
                         s_valid <= '0';
                         s_data_buff <= (others => '0');
-                        s_cnt <= 0;
                         s_bit_cnt <= 0; 
                 end case;
             end if;

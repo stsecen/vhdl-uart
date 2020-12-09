@@ -24,7 +24,7 @@ architecture rtl of uart_tx is
     signal state : state_type := state_idle;
     signal s_ready : std_logic := '0';
     constant TIMER_TICK : integer := CLK_FREQ/BAUD_RATE;
-    signal s_cnt   : integer range 0 downto TIMER_TICK;
+    signal s_cnt   : integer range 0 to TIMER_TICK := 0;
     signal s_tick  : std_logic := '0';
     signal s_tx_buffer : std_logic_vector(DATA_WIDTH-1 downto 0) := (others => '0');
     signal s_bit_cnt   : integer range 0 to DATA_WIDTH-1 := 0;
