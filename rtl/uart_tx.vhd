@@ -131,7 +131,7 @@ begin
                     when others =>
                         state <= state_idle; 
                         o_txd <= '1';
-                        o_ready <= '0';
+                        s_ready <= '0';
                         s_bit_cnt <= 0;
                 end case ;
             end if;
